@@ -1,12 +1,6 @@
 package com.models;
 
-public class employee {
-
-	private String empNic;
-	private String empName;
-	private String empAddress;
-	private String empEmail;
-	private String empPassword;
+public class employee extends User {
 	
 	public void setEmpNic(String empNic){
 		this.empNic=empNic;
