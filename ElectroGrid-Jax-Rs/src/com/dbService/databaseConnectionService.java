@@ -1,5 +1,5 @@
 package com.dbService;
-
+//it20032524 Warnakulasuriya M.A.N.H
 import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.sql.Connection;
@@ -29,7 +29,7 @@ public class databaseConnectionService {
 		}
 		
 	}
-	
+	//Register for Employees
 	public void registerEmployeeDatabase(String empNic, String empAddress, String empEmail, String empName, String empPassword){
 		
 		try{
@@ -44,7 +44,7 @@ public class databaseConnectionService {
 			System.out.println(e);
 		}
 	}
-	
+	//Login for employee, Database authentication
 	public ArrayList<String> employeeLogin(String empEmail, String empPassword){
 		ResultSet result = null;
 		
@@ -81,47 +81,5 @@ public class databaseConnectionService {
 		
 	}
 	
-	public boolean updateComplaint(int customerId, boolean status, int complaintNO){
-		
-		int updateStatus=0;
-		
-		try{
-			System.out.println("CustomerId:"+customerId);
-			System.out.println("status:"+status);
-			System.out.println("complaintNO:"+complaintNO);
-			databaseConnection();
-			
-			updateStatus = stmt.executeUpdate("update complaint set Complaint_Status="+status+" WHERE Complaint_No="+complaintNO+" AND CustomerId="+customerId+";");
-			
-			System.out.println("update Status value: "+updateStatus);
-			
-			con.close();
-			
-		}catch(SQLException SQ){
-			System.out.println("Updation failed");
-		}
-		
-		if(updateStatus!=0){
-			System.out.println("Update Completed...");
-			return true;
-		}else{
-			return false;
-		}
-	}
-	
-	public void deleteComplaint(int complaintId,
-			int CustomerId){
-		int updateStatus=0;
-		try{
-			databaseConnection();
-			
-			updateStatus=stmt.executeUpdate("DELETE FROM complaint WHERE complaint_no="+complaintId+" AND customerId="+CustomerId+";");
-			con.close();
-		}catch(SQLException sq){
-			System.out.println("Deletion failed...");
-		}
-		
-		if(updateStatus!=0)
-			System.out.println("Delete Completed...");
-	}
+
 }
