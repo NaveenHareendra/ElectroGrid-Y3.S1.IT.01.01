@@ -1,4 +1,4 @@
-package com.api; 
+package com.dbService; 
 import java.sql.*; 
 public class complain
 { //A common method to connect to the DB

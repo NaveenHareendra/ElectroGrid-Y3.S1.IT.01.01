@@ -1,5 +1,5 @@
-package com.dbService; 
-import com.api.complain; 
+package com.api; 
+import com.dbService.complain; 
 //For REST Service
 import javax.ws.rs.*; 
 import javax.ws.rs.core.MediaType; 

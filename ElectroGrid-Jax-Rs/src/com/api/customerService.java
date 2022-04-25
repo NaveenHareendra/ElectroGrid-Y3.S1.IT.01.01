@@ -1,5 +1,5 @@
-package com.dbService; 
-import com.api.customer; 
+package com.api; 
+import com.dbService.customer; 
 //For REST Service
 import javax.ws.rs.*; 
 import javax.ws.rs.core.MediaType; 
