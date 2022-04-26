@@ -4,6 +4,7 @@ import java.util.Date;
 import com.dbService.complaintService;
 public class client extends User {
 	private int customerId;
+	private int customerNic;
 	
    //Dependency implementation
 	public String addComplaint(int customerId, complaint c){

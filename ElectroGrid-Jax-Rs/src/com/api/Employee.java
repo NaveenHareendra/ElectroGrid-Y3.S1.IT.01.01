@@ -29,7 +29,7 @@ public class Employee {
 	
 	databaseConnectionService dbConnect = new databaseConnectionService();
 	complaintService complaintDbService = new complaintService();
-	@Path("/")
+	@Path("/Register")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
 	@POST
 	public void Register(@FormParam("empNic") String empNic,
@@ -37,20 +37,24 @@ public class Employee {
 			@FormParam("empAddress") String empAddress,
 			@FormParam("empEmail") String empEmail,
 			@FormParam("empPassword") String empPassword){
-
-		regEmployee.setEmpNic(empNic);
-		regEmployee.setEmpEmail(empEmail);
-		regEmployee.setEmpAddress(empAddress);
-		regEmployee.setEmpName(empName);
-		regEmployee.setEmpPassword(empPassword);
+		if(empNic.length()!=0 && empAddress.length()!=0 && empName.length()!=0 && empEmail.length()!=0  && empPassword.length()!=0 ){
+		
+			regEmployee.setEmpNic(empNic);
+			regEmployee.setEmpEmail(empEmail);
+			regEmployee.setEmpAddress(empAddress);
+			regEmployee.setEmpName(empName);
+			regEmployee.setEmpPassword(empPassword);
 
 //		System.out.println("Register()");						
-		dbConnect.registerEmployeeDatabase(
+			dbConnect.registerEmployeeDatabase(
 				regEmployee.getEmpNic(),
 				regEmployee.getEmpAddress(),
 				regEmployee.getEmpEmail(),
 				regEmployee.getEmpName(),
 				regEmployee.getEmpPassword());
+		}else{
+			System.out.println("Entered empty values...");
+		}
 		
 	}
 	
@@ -65,7 +69,7 @@ public class Employee {
 		
 		ArrayList<String> profileInformation = new ArrayList<String>();
 		
-		if((empEmail!=null) && (empPassword!=null)){
+		if((empEmail.length()!=0) && (empPassword.length()!=0)){
 
 			System.out.println("called!");	
 			

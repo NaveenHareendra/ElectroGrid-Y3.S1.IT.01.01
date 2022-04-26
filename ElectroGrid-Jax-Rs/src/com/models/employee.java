@@ -1,25 +1,26 @@
 package com.models;
 //it20032524 Warnakulasuriya M.A.N.H
 public class employee extends User {
+	private String empNic;
 	
 	public void setEmpNic(String empNic){
 		this.empNic=empNic;
 	}
 	
 	public void setEmpName(String empName){
-		this.empName=empName;
+		this.Name=empName;
 	}
     
 	public void setEmpAddress(String empAddress){
-    	this.empAddress=empAddress;
+    	this.Address=empAddress;
     }
     
 	public void setEmpEmail(String empEmail){
-    	this.empEmail=empEmail;
+    	this.Email=empEmail;
     }
     
 	public void setEmpPassword(String empPassword){
-    	this.empPassword=empPassword;
+    	this.Password=empPassword;
     }
     
     
@@ -27,18 +28,18 @@ public class employee extends User {
 		return empNic;
 	}
 	public String getEmpName(){
-		return empName;
+		return Name;
 	}
     
 	public String getEmpAddress( ){
-    	return empAddress;
+    	return Address;
     }
     
 	public String getEmpEmail(){
-    	return empEmail;
+    	return Email;
     }
     
 	public String getEmpPassword(){
-    	return empPassword;
+    	return Password;
     }
 }
