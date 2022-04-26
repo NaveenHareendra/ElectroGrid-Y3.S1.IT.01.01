@@ -23,14 +23,14 @@ DROP TABLE IF EXISTS `complaint`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `complaint` (
-  `Complaint_No` varchar(100) NOT NULL,
+  `Complaint_No` int NOT NULL AUTO_INCREMENT,
   `CustomerId` int NOT NULL,
   `Description` varchar(300) NOT NULL,
   `Complaint_Date` date NOT NULL,
   `Complaint_Status` tinyint(1) DEFAULT NULL,
-  `EmpNic` varchar(15) NOT NULL,
-  PRIMARY KEY (`CustomerId`,`Complaint_No`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `EmpNic` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`Complaint_No`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `complaint` (
 
 LOCK TABLES `complaint` WRITE;
 /*!40000 ALTER TABLE `complaint` DISABLE KEYS */;
-INSERT INTO `complaint` VALUES ('2',1,'There is a problem Number 2','2022-03-30',1,'200010402209'),('1',2,'There is a problem Number 1','2022-03-30',0,'200010402209');
+INSERT INTO `complaint` VALUES (1,1,'There is a problem Number 33','2022-03-25',0,'200010402209'),(2,1,'There is a problem Number 2','2022-03-30',0,'200010402209'),(3,1,'There is a problem Number 2','2022-03-30',0,''),(4,1,'I dont know!','1970-01-01',0,''),(5,2,'There is a problem Number 5','2022-04-26',1,''),(6,2,'\"Power Leaks \"','2022-04-26',0,''),(7,3,'Power Breaks','2022-04-26',0,'');
 /*!40000 ALTER TABLE `complaint` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-26  3:45:27
+-- Dump completed on 2022-04-26 17:22:29

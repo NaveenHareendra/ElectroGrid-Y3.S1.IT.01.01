@@ -1,9 +1,15 @@
 package com.models;
-import java.util.Date;//it20032524 Warnakulasuriya M.A.N.H
+import java.util.Date;
+//it20032524 Warnakulasuriya M.A.N.H
+import com.dbService.complaintService;
 public class client extends User {
-   //Dependency
-	public void addComplaint(Date date ,complaint c, int CustomerId, String empNic){
-		
-		
+	private int customerId;
+	
+   //Dependency implementation
+	public String addComplaint(int customerId, complaint c){
+		complaintService complaint = new complaintService();
+		this.customerId = customerId;
+		String output = complaint.addComplaint(this.customerId, c.getDescription());
+		return output;
 	}
 }

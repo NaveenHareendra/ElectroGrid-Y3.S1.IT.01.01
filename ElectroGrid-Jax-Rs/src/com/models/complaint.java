@@ -2,9 +2,9 @@ package com.models;
 //it20032524 Warnakulasuriya M.A.N.H
 public class complaint {
 
-	public int complaintNo;
-	public boolean complaintStatus;
-	public String description;
+	private int complaintNo;
+	private boolean complaintStatus;
+	private String description;
 	
 	public void setComplaintNo(int complaintNo){
 		this.complaintNo=complaintNo;
