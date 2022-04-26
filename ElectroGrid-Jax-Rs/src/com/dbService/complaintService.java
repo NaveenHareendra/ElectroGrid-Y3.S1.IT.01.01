@@ -1,10 +1,13 @@
 package com.dbService;
 //it20032524 Warnakulasuriya M.A.N.H
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 
 public class complaintService{
 	private Statement stmt;
@@ -25,6 +28,30 @@ public class complaintService{
 			
 		}catch(Exception e){
 			System.out.println(e);
+		}
+		
+	}
+	
+	public String addComplaint(int customerId, String Description){
+		boolean complaintStatus =false;
+//		Date complaintDate =  new Date(0);
+		int addCheck=0;
+//		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
+		System.out.println(customerId);
+		System.out.println(Description);
+		
+		try{
+			databaseConnection();
+			addCheck=stmt.executeUpdate("INSERT INTO Complaint VALUES(0,'"+customerId+"','"+Description+"',DATE_FORMAT(now(), '%y%m%d'),"+complaintStatus+",'');");
+			con.close();
+		}catch(SQLException SQ){
+			System.out.println("Action Incomplete: "+SQ);
+		}
+		if(addCheck!=0){
+			System.out.println("Complaint Added...");
+			return "Complaint Added...";
+		}else{
+			return "Complaint not added Added...";
 		}
 		
 	}
@@ -95,6 +122,46 @@ public class complaintService{
 				 output += "\n------------------------------------\n";
 			}
 			
+			con.close();
+			
+			
+		}catch(SQLException SQ){
+			System.out.println("Exception: "+SQ);
+		}
+		
+		return output;
+
+	}
+	
+	public String readCustomerComplaints(int customerId){
+		ResultSet rs;
+		String output = "";
+		try{
+			databaseConnection();
+			rs=stmt.executeQuery("Select *from Complaint WHERE customerId="+customerId);
+			
+			 output = "<table border='1'><tr>"+
+					 "<th>Complaint No</th><th>"+
+					 "Customer Id</th>" +
+					 "<th>Description</th>" + 
+					 "<th>complainDate</th>"+
+					 "<th>complain status</th>"+
+					 "</tr>"; 
+			 
+			while(rs.next()){
+				 String ComplaintNo = Integer.toString(rs.getInt("Complaint_No")); 
+				 String CustomerId = rs.getString("CustomerId"); 
+				 String Description = rs.getString("Description"); 
+				 String complainDate = rs.getString("Complaint_Date");  
+				 boolean complainStatus = rs.getBoolean("Complaint_Status");  
+				 
+				 output += "<tr><td>" + ComplaintNo + "</td>"; 
+				 output += "<td>" + CustomerId + "</td>"; 
+				 output += "<td>" + Description + "</td>"; 
+				 output += "<td>" + complainDate + "</td>"; 
+				 output += "<td>" + complainStatus + "</td>"; 
+			}
+			output += "</table>"; 
 			con.close();
 			
 			
